@@ -1233,14 +1233,22 @@ body {
 
     .timeline {
         padding-left: 1.5rem;
+        overflow-x: visible;
     }
 
     .timeline-item {
         padding-left: 2rem;
+        overflow-x: visible;
     }
 
     .timeline-marker {
         left: -1.25rem;
+    }
+
+    .timeline-content {
+        overflow-x: visible;
+        width: 100%;
+        max-width: 100%;
     }
 
     .honors-grid,
@@ -1321,4 +1329,5 @@ body {
     html {
         scroll-behavior: smooth;
     }
+    
 }

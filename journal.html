@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudan Conflict Journal | K3IXD</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .journal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .journal-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding-top: 6rem;
+        }
+
+        .journal-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .journal-section {
+            margin-bottom: 4rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2.5rem;
+        }
+
+        .journal-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .journal-section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .journal-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .journal-section ul {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .journal-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .journal-meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        .timeline-embed {
+            width: 100%;
+            height: 650px;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .map-embed {
+            width: 100%;
+            height: 600px;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .donation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .donation-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .donation-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .donation-card img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .donation-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .donation-card p {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .donation-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .donation-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .quicklinks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .quicklink-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .quicklink-item:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .quicklink-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .quicklink-item a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .journal-container {
+                padding: 1rem;
+            }
+
+            .journal-section {
+                padding: 1.5rem;
+            }
+
+            .timeline-embed {
+                height: 500px;
+            }
+
+            .map-embed {
+                height: 500px;
+            }
+
+            .donation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
+                    <span class="callsign">K3IXD</span>
+                    <span class="name">Timur Bolukbas</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#honors" class="nav-link">Honors</a></li>
+                <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="index.html#activities" class="nav-link">Activities</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="journal.html" class="nav-link">Journal</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="journal-container">
+        <div class="journal-header">
+            <h1 class="journal-title">Sudan Conflict Documentation</h1>
+            <p class="journal-meta">A non-profit, student-run initiative documenting the conflict from April 15, 2023, onward</p>
+        </div>
+
+        <!-- Mission and Scope -->
+        <section class="journal-section">
+            <h2>Mission and Scope</h2>
+            <p>
+                This project is a non-profit, student-run initiative documenting the Sudan conflict from April 15, 2023, onward. Using geospatial imagery, social media, news reporting, and official sources, we compile verified information into structured timelines and visualizations. Our work includes tracking major developments, RSF movements, and an interactive map to make patterns and events clear over time.
+            </p>
+            <p>
+                We privilege open-source reporting, humanitarian data, and conflict analysis to document the progression of the conflict. We prioritize verified information and human rights violations, clearly labeling uncertainty.
+            </p>
+            <p class="journal-meta">
+                Lina Abdellatif, Timur Bolukbas.<br>
+                Last Updated: August 20, 2025
+            </p>
+        </section>
+
+        <!-- Project Overview -->
+        <section class="journal-section">
+            <h2>Project Overview</h2>
+            <p>
+                Using geospatial imagery, social media reporting, news coverage, and official statements, we compile events into structured timelines and data visualizations to provide a clear picture of the conflict.
+            </p>
+            <h3>Our current work includes:</h3>
+            <ul>
+                <li><strong>Main Timeline:</strong> Major battles, ceasefires, and political events.</li>
+                <li><strong>RSF Movement Timeline:</strong> Tracking the actions and deployments of the Rapid Support Forces.</li>
+                <li><strong>Interactive Map:</strong> Visualizing territorial control, event locations, and humanitarian impact.</li>
+            </ul>
+            <p>
+                Our goal is to provide a reliable, transparent, and student-driven resource that emphasizes data accuracy, context, and accessibility for researchers, journalists, and the public.
+            </p>
+            <p class="journal-meta">Last updated: Jan 27, 2026</p>
+        </section>
+
+        <!-- Timeline Embed -->
+        <section class="journal-section">
+            <h2>Conflict Timeline</h2>
+            <div class="timeline-embed">
+                <iframe src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vR8RGRBVJewjI-wjmNUncyIDeYy50Oycwkyc5DGGE_rwg9x7iLHtHtki6Ln0pKHNUt456Ptd4h7E0uk&font=Default&lang=en&start_at_end=true&initial_zoom=2&width=100%25&height=650" width="100%" height="650" frameborder="0"></iframe>
+            </div>
+        </section>
+
+        <!-- Donation Links -->
+        <section class="journal-section">
+            <h2>Donation Links / Quicklinks</h2>
+            
+            <div class="donation-grid">
+                <div class="donation-card">
+                    <h3>Sudan Relief Fund</h3>
+                    <p>Sudan Relief Fund is a 501(c)(3) nonprofit organization dedicated to bringing food, safe drinking water, shelter, medical attention and hope to the people of South Sudan and the Nuba Mountains of Sudan. Since 1998, Sudan Relief Fund has made significant progress developing and strengthening communities, but our efforts are far from over. Our mission is to provide peace and hope for the future by alleviating immediate humanitarian concerns and aiding in the development of infrastructure necessary for growth and stability in the world's youngest nation. We are achieving this by building schools, hospitals, and training programs to empower the people of South Sudan and the Nuba region so they are better equipped to successfully take control of their own future.</p>
+                    <a href="https://www.sudanreliefund.com/" target="_blank" rel="noopener noreferrer" class="donation-link">Donate to Sudan Relief Fund</a>
+                </div>
+
+                <div class="donation-card">
+                    <h3>Islamic Relief Aid</h3>
+                    <p>One of the world's most severe displacement and hunger crises. More than half of the country's population—around 30 million women, men, and children—now require urgent humanitarian assistance. Ongoing violence has forced nearly 12 million people from their homes, and more than 21 million are facing acute food shortages.</p>
+                    <a href="https://www.islamicreliefusa.org/appeals/sudan-conflict/" target="_blank" rel="noopener noreferrer" class="donation-link">Donate to Islamic Relief</a>
+                </div>
+
+                <div class="donation-card">
+                    <h3>UNICEF</h3>
+                    <p>Sudan is the world's largest humanitarian crisis, and children are paying the highest price. Relentless attacks on hospitals, schools, water and power supplies have left children and families without access to essential services. 15.3 million children require protection and emergency assistance. Famine has been confirmed in parts of North Darfur and the Nuba Mountains. In Al Fasher, North Darfur's capital, 130,000 children have been trapped for over 500 days in harrowing conditions. They are facing brutal violence — including sexual violence — and extreme shortages of food, water and medicine. Children and families in Sudan need urgent protection and humanitarian aid.</p>
+                    <a href="https://www.unicef.org.uk/donate/sudan-appeal/" target="_blank" rel="noopener noreferrer" class="donation-link">Donate to UNICEF</a>
+                </div>
+
+                <div class="donation-card">
+                    <h3>International Committee of the Red Cross (ICRC)</h3>
+                    <p>The ICRC has been present in Sudan since 1978 and stands ready to respond to urgent humanitarian needs together with the Sudanese Red Crescent Society (SRCS). Our neutrality and impartiality give us access to support the most vulnerable people in war zones. Your support today can make a life-saving difference – protecting and saving the lives of victims of armed conflict and violence. 93.5% of your donation will fund our operations for people in need.</p>
+                    <a href="https://www.icrc.org/en/donate/sudan" target="_blank" rel="noopener noreferrer" class="donation-link">Donate to ICRC</a>
+                </div>
+
+                <div class="donation-card">
+                    <h3>UNHCR</h3>
+                    <p>The Sudan crisis is the world's largest displacement and protection emergency. 12 million people remain displaced, many living in makeshift shelters without safety or hope. UNHCR is on the ground in Sudan and in neighbouring countries, providing emergency shelter, clean water, and protection—but our resources are stretched to the breaking point.</p>
+                    <a href="https://www.unhcr.org/us/donate/sudan-emergency" target="_blank" rel="noopener noreferrer" class="donation-link">Donate to UNHCR</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Resources -->
+        <section class="journal-section">
+            <h2>Additional Resources</h2>
+            <p>To find out about more projects monitoring the conflict in Sudan:</p>
+            <div class="quicklinks-grid">
+                <div class="quicklink-item">
+                    <a href="https://sudanhumanrightshub.org/" target="_blank" rel="noopener noreferrer">Homepage - Sudan Human Rights Hub</a>
+                </div>
+                <div class="quicklink-item">
+                    <a href="https://www.info-resilience.org/" target="_blank" rel="noopener noreferrer">Centre for Information Resilience</a>
+                </div>
+                <div class="quicklink-item">
+                    <a href="https://www.operationbrokensilence.org/sudan-crisis-guide" target="_blank" rel="noopener noreferrer">Sudan Crisis Guide — Operation Broken Silence</a>
+                </div>
+                <div class="quicklink-item">
+                    <a href="https://www.dabangasudan.org/" target="_blank" rel="noopener noreferrer">Dabanga Radio TV Online - Latest Sudan News</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Map -->
+        <section class="journal-section">
+            <h2>Interactive Conflict Map</h2>
+            <div class="map-embed">
+                <iframe src="https://sudan.liveuamap.com/" width="100%" height="600" frameborder="0"></iframe>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-callsign">
+                    <span class="callsign-footer">K3IXD</span>
+                    <span class="footer-name">Timur Bolukbas</span>
+                </div>
+                <p class="footer-text">Engineer • Robotics Enthusiast • Cybersecurity Professional</p>
+                <p class="footer-copyright">&copy; 2025 Timur Bolukbas. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
