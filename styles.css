@@ -372,6 +372,103 @@ body {
     transform: translateY(-2px);
 }
 
+/* RPI Section */
+.rpi-card {
+    background: var(--bg-card);
+    border: 2px solid var(--primary-color);
+    border-radius: 1rem;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+}
+
+.rpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-1);
+}
+
+.rpi-layout {
+    display: flex;
+    align-items: center;
+    gap: 3.5rem;
+    flex-wrap: wrap;
+}
+
+.rpi-seal-container {
+    flex: 0 0 min(100%, 480px);
+    width: min(100%, 480px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.rpi-seal {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.55));
+    transition: transform 0.35s ease;
+}
+
+.rpi-card:hover .rpi-seal {
+    transform: scale(1.03);
+}
+
+.rpi-details {
+    flex: 1;
+    min-width: 280px;
+}
+
+.rpi-school {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.rpi-major {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--primary-color);
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.rpi-chant {
+    margin: 0;
+    padding: 1.75rem 2rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--text-secondary);
+}
+
+.rpi-chant p {
+    margin: 0;
+}
+
+.rpi-chant-finale {
+    margin-top: 1.25rem !important;
+    font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
 /* Projects Section */
 .project-card {
     background: var(--bg-card);
@@ -1289,8 +1386,29 @@ body {
     .honor-card,
     .activity-category,
     .skill-category,
-    .project-card {
+    .project-card,
+    .rpi-card {
         padding: 1.5rem;
+    }
+
+    .rpi-seal-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .rpi-seal {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .rpi-layout {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .rpi-chant {
+        text-align: left;
+        padding: 1.25rem 1.5rem;
     }
 
     .project-title {
